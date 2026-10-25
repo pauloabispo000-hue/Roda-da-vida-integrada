@@ -51,6 +51,7 @@ const individualEnergyStrategicExplanations=[
  'definir objetivos de alimentação e medicação, metas de acesso à diversidade de alimentos e desafios de continuidade'
 ];
 export function explanation(area,relation,scale){
+ if(scale==='Individual'&&area===1&&relation===1)return 'capacidades físicas e motoras do corpo físico biológico';
  if(scale==='Individual'&&area===0)return individualEnergyExplanations[relation];
  const target=explanationTargets[scale][area];
  if(area===relation)return `dispor de recursos suficientes para garantir ${target}`;
