@@ -31,3 +31,9 @@ As perguntas e as explicações variam por nível: execução no Operacional, pl
 O relatório, seus rótulos e seus limites ficam ocultos até completar as 432 notas da escala selecionada. A exportação parcial também omite a classificação. O gráfico e as notas continuam disponíveis durante o preenchimento. Trocar para uma escala incompleta oculta novamente o relatório.
 
 O botão de avanço valida explicitamente o contexto e as 12 notas do nível. Ao concluir o nível, seleciona e focaliza a aba seguinte (Operacional → Gerencial → Estratégico); após o Estratégico, segue para a próxima área. Campos faltantes recebem uma mensagem e foco para correção.
+
+## Bloco estratégico
+
+O bloco 1 de cada aba Estratégico contém oito campos de texto sobre missão de vida, visão de futuro, objetivos, metas e desafios de curto e longo prazo. As respostas são salvas por escala e área e incluídas na exportação JSON, preservando dados anteriores. Neste nível, esses campos substituem responsável, periodicidade e duração.
+
+O relatório e a classificação exportada ficam disponíveis após as 432 notas e o preenchimento dos oito campos estratégicos de todas as 12 áreas. A conclusão da área 12 verifica essas pendências. O botão Próxima área seleciona sempre Operacional na área seguinte; o retorno preserva as respostas.

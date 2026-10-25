@@ -1,5 +1,15 @@
 export const areas=['Energia e combustíveis','Habitações e edificações','Transportes e logísticas','Acompanhamentos e assistências','Saneamentos e eliminações','Educações e pesquisas','Informações e comunicações','Entretenimentos e lazeres','Políticas e lideranças','Seguranças e confortos','Matérias-primas e reciclagens','Alimentos e medicamentos'];
 export const levels=['Operacional','Gerencial','Estratégico'];
+export const strategicPrompts=[
+ 'Qual é a sua missão de vida?',
+ 'Qual é a sua visão de futuro?',
+ 'Qual é o seu objetivo de curto prazo?',
+ 'Qual é o seu objetivo de longo prazo?',
+ 'Qual é a sua meta de curto prazo?',
+ 'Qual é a sua meta de longo prazo?',
+ 'Qual é o seu desafio de curto prazo?',
+ 'Qual é o seu desafio de longo prazo?'
+];
 export const scales=['Individual','Familiar','Empresarial','Comunitária','Municipal'];
 export function areaName(i,scale){return i===0&&['Individual','Familiar'].includes(scale)?'Energia':areas[i];}
 export function actors(scale){return {Individual:['Eu','Outro'],Familiar:['Eu','Marido','Esposa','Empregada','Sogra','Sogro','Avô','Avó',...Array.from({length:12},(_,i)=>`Filho#${i+1}`)],Empresarial:['Eu','Operador da área','Auxiliar da área','Supervisor da área','Gerente da área','Diretor','Prestador de serviço'],Comunitária:['Eu','Morador','Voluntário','Agente comunitário','Associação de moradores','Coordenador comunitário','Liderança comunitária','Serviço público'],Municipal:['Eu','Servidor municipal','Equipe técnica','Coordenador','Secretário municipal','Prefeito','Concessionária','Organização parceira']}[scale];}
@@ -26,6 +36,20 @@ const individualEnergyManagerialExplanations=[
  'planejar a aquisição de alimentos e seu reaproveitamento',
  'planejar a aquisição de diversidade de alimentos e medicamentos naturais e controlar o consumo'
 ];
+const individualEnergyStrategicExplanations=[
+ 'definir a condição energética desejada, metas de suficiência e desafios futuros, considerando a energia do organismo',
+ 'definir as condições desejadas de estrutura corporal biológica',
+ 'definir objetivos e metas de emagrecimento por perda de gordura e ganho de massa muscular',
+ 'definir acompanhamento profissional para o alcance de objetivos, metas e desafios',
+ 'definir objetivos de evacuação e micção, metas de melhorias alimentares para o atingimento dos objetivos',
+ 'definir o objetivo do aprendizado, metas e desafios a serem atingidos',
+ 'definir objetivos de capacidade de controle da fome e saciedade, metas e desafios coerentes',
+ 'definir o papel do entretenimento e lazer, metas de qualidade de vida e desafios futuros',
+ 'definir o propósito da dieta alimentar, os objetivos de saúde, as metas e os desafios para mantê-la',
+ 'definir objetivos de proteção e conforto, metas de prevenção e desafios futuros, considerando a energia do organismo',
+ 'definir objetivos de consumo de diversidade de alimentos, metas de reaproveitamento e desafios futuros',
+ 'definir objetivos de alimentação e medicação, metas de acesso à diversidade de alimentos e desafios de continuidade'
+];
 export function explanation(area,relation,scale){
  if(scale==='Individual'&&area===0)return individualEnergyExplanations[relation];
  const target=explanationTargets[scale][area];
@@ -47,7 +71,7 @@ export function question(area,relation,scale,level=0){
  }
  if(level===2){
   const strategicActions=['definir a condição energética desejada, metas de suficiência e desafios futuros','definir as condições desejadas de estrutura, metas de adequação e desafios de longo prazo','definir objetivos de acesso e mobilidade, metas de logística e desafios futuros','definir o propósito da assistência, metas de cobertura e desafios de continuidade','definir objetivos de higiene e eliminação, metas de melhoria e desafios futuros','definir o propósito do aprendizado, metas de desenvolvimento e desafios de conhecimento','definir objetivos de comunicação, metas de acesso à informação e desafios futuros','definir o papel do entretenimento e lazer, metas de qualidade de vida e desafios futuros','definir o propósito das decisões, a situação futura desejada e metas para superar os desafios','definir objetivos de proteção e conforto, metas de prevenção e desafios futuros','definir objetivos de uso e renovação de materiais, metas de reaproveitamento e desafios futuros','definir objetivos de alimentação e cuidados, metas de acesso e desafios de continuidade'];
-  const detail=scale==='Individual'&&area===0&&relation===8?'definir o propósito da dieta alimentar, os objetivos de saúde, as metas e os desafios para mantê-la':`${strategicActions[relation]}, considerando ${explanationTargets[scale][area]}`;
+  const detail=scale==='Individual'&&area===0?individualEnergyStrategicExplanations[relation]:`${strategicActions[relation]}, considerando ${explanationTargets[scale][area]}`;
   return `Qual o grau de satisfação com a definição da missão, da visão, dos objetivos, das metas e dos desafios para ${relationText} ${subject} (${detail})?`;
  }
  return `Qual o grau de satisfação com ${relationText} ${subject} (${operationalExplanation})?`;
