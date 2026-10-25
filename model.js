@@ -11,7 +11,21 @@ const explanationTargets={
  Comunitária:['a energia e os combustíveis da comunidade','os espaços e as edificações comunitárias','a mobilidade da comunidade','o apoio e a assistência aos moradores','o saneamento e a gestão de resíduos da comunidade','a educação e a pesquisa na comunidade','a comunicação e as informações comunitárias','o lazer e a convivência comunitária','as decisões e as lideranças comunitárias','a segurança e o conforto dos moradores','os materiais e a reciclagem comunitária','a alimentação e o acesso a medicamentos na comunidade'],
  Municipal:['a energia e os combustíveis do município','as edificações e os espaços municipais','a mobilidade e a logística municipal','os serviços municipais de assistência','o saneamento e a gestão de resíduos municipais','a educação e a pesquisa no município','as informações e a comunicação municipal','os espaços e as atividades de lazer municipais','as políticas e a gestão municipal','a segurança e o conforto da população','os insumos e a reciclagem no município','a alimentação e o acesso a medicamentos no município']
 };
-const individualEnergyExplanations=['acúmulo de gordura corporal','condições do corpo para utilizar suas reservas de energia','Acúmulo de gordura corporal','acompanhamento profissional da disposição e do metabolismo','Evacuação, micção e higiene da pele','aprender sobre metabolismo e necessidades energéticas','compreender os sinais de fome, saciedade e cansaço','equilibrar descanso, lazer e gasto de energia','seguir dieta alimentar','utilizar as reservas de energia sem comprometer a saúde','diversidade de alimentos consumidos e velocidade de cicatrização','alimentos que geram energia e medicamentos naturais'];
+const individualEnergyExplanations=['acúmulo de gordura corporal','condições do corpo para utilizar suas reservas de energia','Acúmulo de gordura corporal','acompanhamento profissional da disposição e do metabolismo','Evacuação e micção','aprender sobre metabolismo e necessidades energéticas','compreender os sinais de fome, saciedade e cansaço','equilibrar descanso, lazer e gasto de energia','seguir dieta alimentar','utilizar as reservas de energia sem comprometer a saúde','diversidade de alimentos consumidos e velocidade de cicatrização','Ingerir alimentos que geram energia e medicamentos naturais'];
+const individualEnergyManagerialExplanations=[
+ 'prever a demanda de calorias diárias',
+ 'planejar a capacidade energética disponível',
+ 'planejar emagrecimento por perda de gordura',
+ 'planejar comparecer em consultas profissionais — nutricionista, médico etc.',
+ 'planejar rotinas de evacuação e micção',
+ 'planejar estudos e capacitações, alocar tempo para aprendizado sobre a energia do organismo',
+ 'planejar e controlar os tipos de alimentos ingeridos quando sente fome',
+ 'planejar e controlar alimentos de fast food e ricos em gorduras e açúcares',
+ 'planejar a dieta alimentar e acompanhar os recursos e a rotina para segui-la',
+ 'planejar medidas de segurança alimentar individual',
+ 'planejar a aquisição de alimentos e seu reaproveitamento',
+ 'planejar a aquisição de diversidade de alimentos e medicamentos naturais e controlar o consumo'
+];
 export function explanation(area,relation,scale){
  if(scale==='Individual'&&area===0)return individualEnergyExplanations[relation];
  const target=explanationTargets[scale][area];
@@ -28,7 +42,7 @@ export function question(area,relation,scale,level=0){
  const operationalExplanation=explanation(area,relation,scale);
  if(level===1){
   const resourceControls=['prever a demanda, distribuir os recursos energéticos e acompanhar seu consumo','planejar a capacidade disponível, organizar os recursos e acompanhar sua utilização','programar deslocamentos, distribuir os meios de transporte e controlar prazos','organizar o apoio disponível, distribuir responsabilidades e acompanhar os atendimentos','planejar rotinas de saneamento, reservar recursos e acompanhar sua execução','planejar estudos e capacitações, alocar tempo e acompanhar o aprendizado','organizar as fontes de informação, os canais e o acompanhamento da comunicação','planejar atividades de entretenimento e lazer, reservar tempo e controlar os recursos','organizar planos de ação, distribuir responsabilidades e acompanhar os resultados','planejar medidas de proteção, alocar recursos e acompanhar riscos e conforto','planejar a obtenção e o reaproveitamento de materiais e controlar sua utilização','planejar o acesso a alimentos e medicamentos e acompanhar os recursos e sua utilização'];
-  const detail=scale==='Individual'&&area===0&&relation===8?'planejar a dieta alimentar e acompanhar os recursos e a rotina para segui-la':`${resourceControls[relation]}, considerando ${explanationTargets[scale][area]}`;
+  const detail=scale==='Individual'&&area===0?individualEnergyManagerialExplanations[relation]:`${resourceControls[relation]}, considerando ${explanationTargets[scale][area]}`;
   return `Qual o grau de satisfação com o planejamento e o controle dos recursos disponíveis para ${relationText} ${subject} (${detail})?`;
  }
  if(level===2){
