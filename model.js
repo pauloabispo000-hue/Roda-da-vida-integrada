@@ -59,6 +59,7 @@ export function explanation(area,relation,scale){
  return actions[relation];
 }
 export function question(area,relation,scale,level=0){
+ if(scale==='Individual'&&area===1&&relation===0&&level===0)return 'Qual o grau de satisfação com a disponibilidade de energias e combustíveis para manter as habitações e edificações do indivíduo avaliado (garantir energia e combustível para manter o corpo biológico e suas condições físicas)?';
  const energy={Individual:'energia e combustível biológicos individuais',Familiar:'energia elétrica residencial',Empresarial:'energia elétrica empresarial e combustíveis da empresa',Comunitária:'energia elétrica comunitária e combustíveis da comunidade',Municipal:'energia elétrica municipal e combustíveis do município'};
  const contexts={Individual:'do indivíduo avaliado',Familiar:'da família',Empresarial:'da empresa',Comunitária:'da comunidade',Municipal:'do município'};
  const subject=area===0?energy[scale]:`${areaName(area,scale).toLocaleLowerCase('pt-BR')} ${contexts[scale]}`;
