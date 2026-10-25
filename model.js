@@ -28,3 +28,10 @@ export function question(area,relation,scale){
  return `Qual o grau de satisfação com ${relationText} ${subject} (${explanation(area,relation,scale)})?`;
 }
 export function score(answers,area,level=null){const values=[];for(let l=0;l<3;l++)if(level===null||l===level)for(let q=0;q<12;q++){const v=answers[`${area}-${l}-${q}`];if(Number.isInteger(v)&&v>=0&&v<=10)values.push(v);}const sum=values.reduce((a,b)=>a+b,0);return {sum,count:values.length,max:level===null?360:120,average:values.length?sum/values.length:null};}
+
+export function classification(result){
+ if(result.count!==36||result.average===null)return 'Pendente';
+ if(result.average<=5)return 'Negligência';
+ if(result.average>=6)return 'Diligência';
+ return 'Faixa intermediária';
+}

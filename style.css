@@ -2,3 +2,12 @@
 
 /* Paleta inspirada na marca Paulo Bispo · Método Sigma. */
 body{background:linear-gradient(155deg,#304259 0%,#24364b 48%,#172536 100%);background-attachment:fixed}header{box-shadow:0 1px 0 #e5bd7226}.card{box-shadow:0 8px 30px #050c1826}.navigation button.active{box-shadow:inset 3px 0 #e8c57d}.tabs button.active{background:#3e4550}.rating input:checked+span{color:#1c2b3d}button:not(:disabled):hover{filter:brightness(1.12)}input::placeholder{color:#a6b3c3}dialog{background:#293b50}.summary strong{color:#e8c57d}.intro h1{color:#f3ead5}progress{border:0;border-radius:8px;background:#3e5269}progress::-webkit-progress-bar{background:#3e5269;border-radius:8px}progress::-webkit-progress-value{background:#e8c57d;border-radius:8px}progress::-moz-progress-bar{background:#e8c57d;border-radius:8px}
+
+/* Panorama principal antes da configuração e do questionário. */
+.workspace{grid-template-columns:225px minmax(0,1fr)}
+.results{position:static;grid-column:auto;width:100%;padding:30px;margin-bottom:28px}
+.panorama-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start}
+.panorama-chart{min-width:0}.results svg{width:100%;max-width:640px;margin:auto}.panorama-details{min-width:0}
+.report h3{font-size:20px;margin:24px 0 8px}.report h4{color:#e8c57d;font-size:14px;margin:0 0 10px}.report-group{padding:16px 0;border-top:1px solid #506177}.report-group ul{padding-left:20px;margin:0;line-height:1.9;font-size:13px}.report-group p{margin:0}
+@media(max-width:1150px){.workspace{grid-template-columns:180px minmax(0,1fr)}}
+@media(max-width:850px){.panorama-grid{grid-template-columns:1fr;gap:8px}.results{padding:20px}.results svg{max-width:560px}.panorama-details .summary{margin-top:8px}}
