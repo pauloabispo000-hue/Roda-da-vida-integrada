@@ -8,7 +8,7 @@ export function question(area,relation,scale){
  const energy={Individual:'energia biológica individual',Familiar:'energia elétrica residencial',Empresarial:'energia elétrica empresarial e combustíveis da empresa',Comunitária:'energia elétrica comunitária e combustíveis da comunidade',Municipal:'energia elétrica municipal e combustíveis do município'};
  const contexts={Individual:'do indivíduo avaliado',Familiar:'da família',Empresarial:'da empresa',Comunitária:'da comunidade',Municipal:'do município'};
  const subject=area===0?energy[scale]:`${areaName(area,scale).toLocaleLowerCase('pt-BR')} ${contexts[scale]}`;
- const relationText=relation===area?'a disponibilidade de':`${[2,3,4,7].includes(relation)?'o':'a'} ${relations[relation]}`;
+ const relationText=relation===area?'a disponibilidade de':scale==='Individual'&&relation===1?'o corpo biológico para utilização de':`${[2,3,4,7].includes(relation)?'o':'a'} ${relations[relation]}`;
  return `Qual o grau de satisfação com ${relationText} ${subject}?`;
 }
 export function score(answers,area,level=null){const values=[];for(let l=0;l<3;l++)if(level===null||l===level)for(let q=0;q<12;q++){const v=answers[`${area}-${l}-${q}`];if(Number.isInteger(v)&&v>=0&&v<=10)values.push(v);}const sum=values.reduce((a,b)=>a+b,0);return {sum,count:values.length,max:level===null?360:120,average:values.length?sum/values.length:null};}
