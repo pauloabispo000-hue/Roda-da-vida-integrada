@@ -38,7 +38,7 @@ function advanceLevel(){
   element.setAttribute('aria-invalid','true');element.focus({preventScroll:true});
   $('navigation-feedback').scrollIntoView?.({block:'center',behavior:'instant'});
  };
- if(unfilled.length){showError('Para abrir a próxima aba, preencha: '+unfilled.map(id=>id.startsWith('strategy-')?strategicPrompts[Number(id.split('-')[1])]:({actor:'quem atua',when:'quando atua',minutes:'por quantos minutos atua'})[id]).join(', ')+'.',$(unfilled[0]));return;}
+ if(unfilled.length){showError('Para abrir a próxima aba, preencha: '+unfilled.map(id=>id.startsWith('strategy-')?strategicPrompts[Number(id.split('-')[1])]:({actor:'quem atua',when:'quando atua',minutes:'por quanto tempo atua nessa área por dia'})[id]).join(', ')+'.',$(unfilled[0]));return;}
  d.contexts[`${area}-${level}`]=readContext();
  const missing=Array.from({length:12},(_,q)=>q).filter(q=>!Number.isInteger(d.answers[`${area}-${level}-${q}`]));
  if(missing.length){showError(`Faltam ${missing.length} notas neste nível. Responda a partir da pergunta ${missing[0]+1} para abrir a próxima aba.`,document.querySelector(`[name="q-${missing[0]}"]`));return;}
