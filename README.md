@@ -23,3 +23,11 @@ As áreas foram transcritas do gráfico fornecido por Paulo Bispo. As perguntas 
 O panorama aparece no início, antes das configurações e do questionário. O relatório usa a média do gráfico (0–10), e não a soma bruta (0–360): até 5 = negligência; a partir de 6 = diligência; entre 5 e 6 = faixa intermediária. Áreas com menos de 36 notas ficam pendentes. A classificação também consta no JSON exportado.
 
 Na escala Individual, a duração não é perguntada nem exportada. Nas demais escalas, a opção Perpétuo representa atuação contínua e é salva como `perpetuo`, sem conversão numérica em minutos ou horas.
+
+## Níveis de decisão e divulgação do relatório
+
+As perguntas e as explicações variam por nível: execução no Operacional, planejamento e controle dos recursos disponíveis no Gerencial, e missão, visão, objetivos, metas e desafios no Estratégico. Respostas anteriores são preservadas nas suas áreas e níveis.
+
+O relatório, seus rótulos e seus limites ficam ocultos até completar as 432 notas da escala selecionada. A exportação parcial também omite a classificação. O gráfico e as notas continuam disponíveis durante o preenchimento. Trocar para uma escala incompleta oculta novamente o relatório.
+
+O botão de avanço valida explicitamente o contexto e as 12 notas do nível. Ao concluir o nível, seleciona e focaliza a aba seguinte (Operacional → Gerencial → Estratégico); após o Estratégico, segue para a próxima área. Campos faltantes recebem uma mensagem e foco para correção.
