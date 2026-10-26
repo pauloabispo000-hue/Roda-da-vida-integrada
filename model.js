@@ -51,6 +51,7 @@ const individualEnergyStrategicExplanations=[
  'definir objetivos de alimentação e medicação, metas de acesso à diversidade de alimentos e desafios de continuidade'
 ];
 export function explanation(area,relation,scale){
+ if(scale==='Empresarial'&&area===0&&relation===4)return 'presença de aterramento de eletricidade e operação de eliminação dos resíduos de combustíveis';
  if(scale==='Individual'&&area===1&&relation===1)return 'capacidades físicas e motoras do corpo físico biológico';
  if(scale==='Individual'&&area===0)return individualEnergyExplanations[relation];
  const target=explanationTargets[scale][area];
